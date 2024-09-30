@@ -12,14 +12,14 @@ Named constructor functions are also available, these are faster
 than using new(name):
 
 md5(), sha1(), sha224(), sha256(), sha384(), sha512(), blake2b(), blake2s(),
-sha3_224, sha3_256, sha3_384, sha3_512, shake_128, and shake_256.
+sha3_224, sha3_256, sha3_384, sha3_512, shake_128, shake_256, crc().
 
 More algorithms may be available on your platform but the above are guaranteed
 to exist.  See the algorithms_guaranteed and algorithms_available attributes
 to find out what algorithm names can be passed to new().
 
-NOTE: If you want the adler32 or crc32 hash functions they are available in
-the zlib module.
+NOTE: If you want adler32 or alternative crc32 hash functions they are
+available in the zlib module.
 
 Choose your hash function wisely.  Some have known collision weaknesses.
 sha384 and sha512 will be slow on 32 bit platforms.
@@ -57,6 +57,7 @@ More condensed:
 # always available algorithm is added.
 __always_supported = ('md5', 'sha1', 'sha224', 'sha256', 'sha384', 'sha512',
                       'blake2b', 'blake2s',
+                      'crc',
                       'sha3_224', 'sha3_256', 'sha3_384', 'sha3_512',
                       'shake_128', 'shake_256')
 
@@ -113,6 +114,9 @@ def __get_builtin_constructor(name):
             import _sha3
             cache['shake_128'] = _sha3.shake_128
             cache['shake_256'] = _sha3.shake_256
+        elif name in {'CRC', 'crc'}:
+            import _crc
+            cache['CRC'] = cache['crc'] = _crc.crc
     except ImportError:
         pass  # no extension module, this hash is unsupported.
 

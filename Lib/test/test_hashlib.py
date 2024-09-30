@@ -99,6 +99,7 @@ class HashLibTestCase(unittest.TestCase):
                              'sha224', 'SHA224', 'sha256', 'SHA256',
                              'sha384', 'SHA384', 'sha512', 'SHA512',
                              'blake2b', 'blake2s',
+                             'crc',
                              'sha3_224', 'sha3_256', 'sha3_384', 'sha3_512',
                              'shake_128', 'shake_256')
 

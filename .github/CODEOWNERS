@@ -90,6 +90,7 @@ Modules/md5*                  @gpshead @tiran
 **/*blake*                    @gpshead @tiran
 Modules/_blake2/**            @gpshead @tiran
 Modules/_hacl/**              @gpshead
+Modules/_crc*                 @texzk
 
 # logging
 **/*logging*                  @vsajip

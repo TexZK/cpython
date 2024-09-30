@@ -461,6 +461,7 @@
       <PreprocessorDefinitions>USE_ZLIB_CRC32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <ClCompile Include="..\Modules\cmathmodule.c" />
+    <ClCompile Include="..\Modules\crcmodule.c" />
     <ClCompile Include="..\Modules\_datetimemodule.c" />
     <ClCompile Include="..\Modules\errnomodule.c" />
     <ClCompile Include="..\Modules\faulthandler.c" />

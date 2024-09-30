@@ -871,7 +871,7 @@ Security Options
    .. versionadded:: 3.11
       ``siphash13`` is added and it is the new default.
 
-.. option:: --with-builtin-hashlib-hashes=md5,sha1,sha256,sha512,sha3,blake2
+.. option:: --with-builtin-hashlib-hashes=md5,sha1,sha256,sha512,sha3,blake2,crc
 
    Built-in hash modules:
 
@@ -880,7 +880,8 @@ Security Options
    * ``sha256``;
    * ``sha512``;
    * ``sha3`` (with shake);
-   * ``blake2``.
+   * ``blake2``;
+   * ``crc``.
 
    .. versionadded:: 3.9
 

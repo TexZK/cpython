@@ -718,6 +718,8 @@ LIBHACL_SIMD256_FLAGS
 LIBHACL_SIMD128_OBJS
 LIBHACL_SIMD128_FLAGS
 LIBHACL_CFLAGS
+MODULE__CRC_FALSE
+MODULE__CRC_TRUE
 MODULE__BLAKE2_FALSE
 MODULE__BLAKE2_TRUE
 MODULE__SHA3_FALSE
@@ -1950,9 +1952,9 @@ Optional Packages:
                           leave OpenSSL's defaults untouched, STRING: use a
                           custom string, python and STRING also set TLS 1.2 as
                           minimum TLS version
-  --with-builtin-hashlib-hashes=md5,sha1,sha2,sha3,blake2
+  --with-builtin-hashlib-hashes=md5,sha1,sha2,sha3,blake2,crc
                           builtin hash modules, md5, sha1, sha2, sha3 (with
-                          shake), blake2
+                          shake), blake2, crc
 
 Some influential environment variables:
   PKG_CONFIG  path to pkg-config utility
@@ -28890,7 +28892,7 @@ fi
 
 
 # builtin hash modules
-default_hashlib_hashes="md5,sha1,sha2,sha3,blake2"
+default_hashlib_hashes="md5,sha1,sha2,sha3,blake2,crc"
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for --with-builtin-hashlib-hashes" >&5
 printf %s "checking for --with-builtin-hashlib-hashes... " >&6; }
 
@@ -28932,7 +28934,9 @@ for builtin_hash in $with_builtin_hashlib_hashes; do
   sha3) :
     with_builtin_sha3=yes ;; #(
   blake2) :
-    with_builtin_blake2=yes
+    with_builtin_blake2=yes ;; #(
+  crc) :
+    with_builtin_crc=yes
      ;; #(
   *) :
      ;;
@@ -30617,6 +30621,44 @@ fi
 printf "%s\n" "$py_cv_module__blake2" >&6; }
 
 
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for stdlib extension module _crc" >&5
+printf %s "checking for stdlib extension module _crc... " >&6; }
+        if test "$py_cv_module__crc" != "n/a"
+then :
+
+    if test "$with_builtin_crc" = yes
+then :
+  if true
+then :
+  py_cv_module__crc=yes
+else $as_nop
+  py_cv_module__crc=missing
+fi
+else $as_nop
+  py_cv_module__crc=disabled
+fi
+
+fi
+  as_fn_append MODULE_BLOCK "MODULE__CRC_STATE=$py_cv_module__crc$as_nl"
+  if test "x$py_cv_module__crc" = xyes
+then :
+
+
+
+
+fi
+   if test "$py_cv_module__crc" = yes; then
+  MODULE__CRC_TRUE=
+  MODULE__CRC_FALSE='#'
+else
+  MODULE__CRC_TRUE='#'
+  MODULE__CRC_FALSE=
+fi
+
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $py_cv_module__crc" >&5
+printf "%s\n" "$py_cv_module__crc" >&6; }
+
+
 LIBHACL_CFLAGS='-I$(srcdir)/Modules/_hacl -I$(srcdir)/Modules/_hacl/include -D_BSD_SOURCE -D_DEFAULT_SOURCE $(PY_STDMODULE_CFLAGS) $(CCSHARED)'
 case "$ac_sys_system" in
   Linux*)
@@ -32256,6 +32298,10 @@ Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${MODULE__BLAKE2_TRUE}" && test -z "${MODULE__BLAKE2_FALSE}"; then
   as_fn_error $? "conditional \"MODULE__BLAKE2\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${MODULE__CRC_TRUE}" && test -z "${MODULE__CRC_FALSE}"; then
+  as_fn_error $? "conditional \"MODULE__CRC\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${MODULE__CTYPES_TRUE}" && test -z "${MODULE__CTYPES_FALSE}"; then

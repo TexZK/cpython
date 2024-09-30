@@ -803,6 +803,7 @@ extern "C" {
     INIT_ID(big), \
     INIT_ID(binary_form), \
     INIT_ID(bit_size), \
+    INIT_ID(bitwise), \
     INIT_ID(block), \
     INIT_ID(bound), \
     INIT_ID(buffer), \
@@ -815,6 +816,7 @@ extern "C" {
     INIT_ID(byteorder), \
     INIT_ID(bytes), \
     INIT_ID(bytes_per_sep), \
+    INIT_ID(bytewise), \
     INIT_ID(c_call), \
     INIT_ID(c_exception), \
     INIT_ID(c_return), \
@@ -991,6 +993,7 @@ extern "C" {
     INIT_ID(infer_variance), \
     INIT_ID(inherit_handle), \
     INIT_ID(inheritable), \
+    INIT_ID(init), \
     INIT_ID(initial), \
     INIT_ID(initial_bytes), \
     INIT_ID(initial_owner), \
@@ -1138,6 +1141,7 @@ extern "C" {
     INIT_ID(pi_factory), \
     INIT_ID(pid), \
     INIT_ID(policy), \
+    INIT_ID(poly), \
     INIT_ID(pos), \
     INIT_ID(pos1), \
     INIT_ID(pos2), \
@@ -1164,6 +1168,8 @@ extern "C" {
     INIT_ID(readonly), \
     INIT_ID(real), \
     INIT_ID(reducer_override), \
+    INIT_ID(refin), \
+    INIT_ID(refout), \
     INIT_ID(registry), \
     INIT_ID(rel_tol), \
     INIT_ID(release), \
@@ -1278,10 +1284,13 @@ extern "C" {
     INIT_ID(weekday), \
     INIT_ID(which), \
     INIT_ID(who), \
+    INIT_ID(width), \
     INIT_ID(withdata), \
+    INIT_ID(wordwise), \
     INIT_ID(writable), \
     INIT_ID(write), \
     INIT_ID(write_through), \
+    INIT_ID(xorout), \
     INIT_ID(year), \
     INIT_ID(zdict), \
 }

@@ -9,6 +9,7 @@ extern PyObject* PyInit__abc(void);
 extern PyObject* PyInit_array(void);
 extern PyObject* PyInit_binascii(void);
 extern PyObject* PyInit_cmath(void);
+extern PyObject* PyInit__crc(void);
 extern PyObject* PyInit_errno(void);
 extern PyObject* PyInit_faulthandler(void);
 extern PyObject* PyInit__tracemalloc(void);
@@ -90,6 +91,7 @@ struct _inittab _PyImport_Inittab[] = {
     {"_ast", PyInit__ast},
     {"binascii", PyInit_binascii},
     {"cmath", PyInit_cmath},
+    {"_crc", PyInit__crc},
     {"errno", PyInit_errno},
     {"faulthandler", PyInit_faulthandler},
     {"gc", PyInit_gc},

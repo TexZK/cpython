@@ -10,7 +10,7 @@
 **Source code:** :source:`Lib/hashlib.py`
 
 .. index::
-   single: message digest, MD5
+   single: message digest, CRC, MD5
    single: secure hash algorithm, SHA1, SHA2, SHA224, SHA256, SHA384, SHA512, SHA3, Shake, Blake2
 
 .. testsetup::
@@ -30,8 +30,10 @@ digests.  The modern term is secure hash.
 
 .. note::
 
-   If you want the adler32 or crc32 hash functions, they are available in
-   the :mod:`zlib` module.
+   This module also provides generic CRC and checksum algorithms.
+
+   If you want alternative adler32 or crc32 hash functions, they are
+   available in the :mod:`zlib` module.
 
 
 .. _hash-algorithms:
@@ -57,7 +59,8 @@ hash supplied more than 2047 bytes of data at once in its constructor or
 Constructors for hash algorithms that are always present in this module are
 :func:`sha1`, :func:`sha224`, :func:`sha256`, :func:`sha384`, :func:`sha512`,
 :func:`sha3_224`, :func:`sha3_256`, :func:`sha3_384`, :func:`sha3_512`,
-:func:`shake_128`, :func:`shake_256`, :func:`blake2b`, and :func:`blake2s`.
+:func:`shake_128`, :func:`shake_256`, :func:`blake2b`, :func:`blake2s`,
+and :func:`crc`.
 :func:`md5` is normally available as well, though it may be missing or blocked
 if you are using a rare "FIPS compliant" build of Python.
 These correspond to :data:`algorithms_guaranteed`.
@@ -144,6 +147,7 @@ Using :func:`new` with an algorithm name:
 .. function:: sha3_256([, data], *, usedforsecurity=True)
 .. function:: sha3_384([, data], *, usedforsecurity=True)
 .. function:: sha3_512([, data], *, usedforsecurity=True)
+.. function:: crc([, data], *, usedforsecurity=False)
 
 Named constructors such as these are faster than passing an algorithm name to
 :func:`new`.
@@ -258,6 +262,36 @@ Example use:
    >>> h = hashlib.shake_256(b'Nobody inspects the spammish repetition')
    >>> h.hexdigest(20)
    '44709d6fcb83d92a76dcb0b668c98e1b1d3dafe7'
+
+
+CRC integer digests
+-------------------
+
+.. function:: crc([, data], *, usedforsecurity=False)
+
+The :func:`crc` algorithms provide an integer result,
+which can be returned as a byte string, a hexadecimal digit string, or as
+an integer itself.  In the case of a string, the byte order (endianness)
+can be either `big` (default) or `little`.
+
+
+.. method:: crc.digest(*, byteorder='big')
+
+   Return the digest of the data passed to the :meth:`update` method so far.
+
+
+.. method:: crc.hexdigest(*, byteorder='big')
+
+   Like :meth:`digest` except the digest is returned as a string object of
+   double length, containing only hexadecimal digits.  This may be used to
+   exchange the value in email or other non-binary environments.
+
+
+.. attribute:: crc.result
+
+   Return the integer digest of the data passed to the :meth:`update`
+   method so far.
+
 
 File hashing
 ------------
